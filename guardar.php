@@ -18,11 +18,11 @@ if (isset($_GET['archivo']) && isset($_GET['directorio'])) {
             fwrite($file, $content);
             fclose($file);
         } else {
-            echo "<script>window.location.href = './error?mensaje={$e->getMessage()}';</script>";
+            echo "<script>window.location.href = './error.php?mensaje={$e->getMessage()}';</script>";
             die();
         }
     } catch (Exception $e) {
-        echo "<script>window.location.href = './error?mensaje={$e->getMessage()}';</script>";
+        echo "<script>window.location.href = './error.php?mensaje={$e->getMessage()}';</script>";
         die();
     }
 } else if (isset($_GET['nuevo'])) {

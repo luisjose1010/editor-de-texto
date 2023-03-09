@@ -31,9 +31,12 @@ for ($i = 0; $i < count($directories); $i++) {
     $fileName = $directories[$i];
 
     try {
-        $fileInfo = stat($directory . $fileName);
+        if (!$fileInfo = stat($directory . $fileName)) {
+            echo "<script>window.location.href = './error.php?mensaje=Ha ocurrido un error inesperado.';</script>";
+            die();
+        }
     } catch (Exception $e) {
-        echo "<script>window.location.href = './error?mensaje={$e->getMessage()}';</script>";
+        echo "<script>window.location.href = './error.php?mensaje={$e->getMessage()}';</script>";
         die();
     }
 
@@ -72,7 +75,7 @@ for ($i = 0; $i < count($directories); $i++) {
             </button>
 
 
-            <form id="search-form" class="form-inline my-2 my-lg-0">
+            <form id="search-form" onkeydown="return event.key != 'Enter';" class="form-inline my-2 my-lg-0">
                 <input id="search" class="form-control mr-sm-2 m-1" type="text" placeholder="Nombre">
                 <button class="btn btn-outline-success my-2 my-sm-0 m-1" onclick="actions.accept('<?= $action ?>', document.querySelector('#search').value, '<?= $directory ?>')" type="button">
                     <?= $actionKey === 'guardar-como' ? 'Guardar' : 'Aceptar' ?>
@@ -110,7 +113,7 @@ for ($i = 0; $i < count($directories); $i++) {
                                 ✅
                             </button>
                         <?php else : ?>
-                            <button onclick="window.location.href = '<?= './explorador?' . $actionKey . '&directorio=' . $directory . $files[$i]['name'] . '/' ?>'">
+                            <button onclick="window.location.href = '<?= './explorador.php?' . $actionKey . '&directorio=' . $directory . $files[$i]['name'] . '/' ?>'">
                                 ✅
                             </button>
                         <?php endif ?>

@@ -14,7 +14,7 @@ if (isset($_GET['archivo']) && isset($_GET['directorio'])) {
         }
         fclose($file);
     } else {
-        echo "<script>window.location.href = './error?mensaje=Archivo no encontrado.';</script>";
+        echo "<script>window.location.href = './error.php?mensaje=Archivo no encontrado.';</script>";
         die();
     }
 } else if (isset($_GET['nuevo'])) {
@@ -52,7 +52,7 @@ if (isset($_GET['archivo']) && isset($_GET['directorio'])) {
                         <a class="nav-link" href="./?nuevo">Nuevo</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="./explorador?abrir">Abrir...</a>
+                        <a class="nav-link" href="./explorador.php?abrir">Abrir...</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="javascript:formActions.save('<?= $fileName ?>', '<?= $directory ?>')">Guardar</a>

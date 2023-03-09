@@ -25,7 +25,7 @@
                         <a class="nav-link" href="./?nuevo">Nuevo</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="./explorador?abrir">Abrir...</a>
+                        <a class="nav-link" href="./explorador.php?abrir">Abrir...</a>
                     </li>
                 </ul>
             </div>
